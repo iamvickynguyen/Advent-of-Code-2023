@@ -23,7 +23,6 @@ int main() {
   string line;
   while (cin >> line) grid.push_back(line);
 
-
   ll ans = 0LL;
   int H = grid.size();
   int W = grid[0].length();
@@ -36,13 +35,18 @@ int main() {
 
         for (int k = j + 1; k < W; ++k) {
           if (!isdigit(grid[i][k])) {
-            if (adj) ans += val;
+            if (adj) {
+              ans += val;
+              val = 0;
+            }
             break;
           }
           val = val * 10 + (grid[i][k] - '0');
           adj |= is_adjacent(i, k, H, W, grid);
           grid[i][k] = '.';
-        }        
+        }
+
+        if (adj) ans += val;        
       }
     }
   }
