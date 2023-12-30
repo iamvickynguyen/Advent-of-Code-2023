@@ -106,33 +106,9 @@ int part2(vector<string> &grid) {
   int ans = 0;
 
   for (int i = 0; i < W; ++i) ans = max(ans, count(grid, 0, i, 'v'));
-  for (int i = 0; i < W; ++i) ans = max(ans, count(grid, H - 1, i, 'v'));
+  for (int i = 0; i < W; ++i) ans = max(ans, count(grid, H - 1, i, '^'));
   for (int i = 0; i < H; ++i) ans = max(ans, count(grid, i, 0, '>'));
   for (int i = 0; i < H; ++i) ans = max(ans, count(grid, i, W - 1, '<'));
-  /*
-  for (int i = 0; i < W; ++i) {
-    int a = count(grid, 0, i, 'v');
-    cout << a << '\n';
-    ans = max(ans, a);
-  }
-  for (int i = 0; i < W; ++i) {
-    int b = count(grid, H - 1, i, 'v');
-    cout << b << '\n';
-    ans = max(ans, b);
-  }
-
-  for (int i = 0; i < H; ++i) {
-    int b = count(grid, i, 0, '>');
-    cout << b << '\n';
-    ans = max(ans, b);
-  }
-
-  for (int i = 0; i < H; ++i) {
-    int b = count(grid, i, W - 1, '<');
-    cout << b << '\n';
-    ans = max(ans, b);
-  }
-  */
 
   return ans;
 }
